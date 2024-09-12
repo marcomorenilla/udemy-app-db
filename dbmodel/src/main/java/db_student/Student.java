@@ -1,12 +1,15 @@
 package db_student;
 
 public class Student {
+
+    private int id;
     private String name;
     private String surname;
     private int age;
     private String email;
 
-    public Student(String name, String surname, int age, String email) {
+    public Student(int id,String name, String surname, int age, String email) {
+        this.id=id;
         this.name = name;
         this.surname = surname;
         this.age = age;
@@ -17,6 +20,14 @@ public class Student {
     public String toString() {
         return String.format("Student: %n " +
                 "name: %s, surname: %s, email: %s, age: %d", name, surname,email,age);
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
