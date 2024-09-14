@@ -2,18 +2,45 @@ package frame;
 
 import constants.NumberConstant;
 import constants.StringConstant;
+import db_student.Student;
+import dbservice.MainFrameImpl;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.WindowConstants;
+//import java.awt.*;
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class MainFrame extends JFrame {
+
+    private TablePanel tablePanel;
+    private MainFrameImpl mainService;
 
     public MainFrame() {
         super(StringConstant.APP_NAME);
         constructFrame();
         setJMenuBar(constructMenuBar());
+        initializeVariables();
+        constructLayout();
 
+    }
+    private  void initializeVariables(){
+        mainService = new MainFrameImpl();
+        tablePanel = new TablePanel();
+        List<Student>students = mainService.getStudents();
+        tablePanel.setTableModel(students);
+        tablePanel.update();
+    }
+
+    private void constructLayout() {
+        setLayout(new BorderLayout());
+        add(tablePanel, BorderLayout.CENTER);
     }
 
     //Method for menu bar options

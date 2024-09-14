@@ -8,6 +8,9 @@ public class DB {
 
     public DB() {
         students = new ArrayList<Student>();
+        students.add(new Student(1,"Marco","Morenilla",25,"marcomorenilla@gmail.com"));
+        students.add(new Student(1,"Marco","Morenilla",25,"marcomorenilla@gmail.com"));
+        students.add(new Student(1,"Marco","Morenilla",25,"marcomorenilla@gmail.com"));
     }
     public  void addStudent(Student student) {
          students.add(student);
