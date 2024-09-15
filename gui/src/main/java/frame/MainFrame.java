@@ -21,6 +21,8 @@ public class MainFrame extends JFrame {
 
     private TablePanel tablePanel;
     private MainFrameImpl mainService;
+    private StatusPanel statusPanel;
+
 
     public MainFrame() {
         super(StringConstant.APP_NAME);
@@ -36,11 +38,13 @@ public class MainFrame extends JFrame {
         List<Student>students = mainService.getStudents();
         tablePanel.setTableModel(students);
         tablePanel.update();
+        statusPanel = new StatusPanel();
     }
 
     private void constructLayout() {
         setLayout(new BorderLayout());
         add(tablePanel, BorderLayout.CENTER);
+        add(statusPanel, BorderLayout.SOUTH);
     }
 
     //Method for menu bar options

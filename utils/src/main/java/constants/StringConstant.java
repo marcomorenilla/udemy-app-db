@@ -13,4 +13,6 @@ public class StringConstant {
 
     public static final String EXIT_MESSAGE = "Are you sure do you want to exit?";
     public static final String EXIT_POPUP_TITLE = "Exit";
+
+    public static final String STATUS_TEXT = "Student_udemy_APP";
 }
