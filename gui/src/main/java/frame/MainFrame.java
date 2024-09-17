@@ -22,6 +22,7 @@ public class MainFrame extends JFrame {
     private TablePanel tablePanel;
     private MainFrameImpl mainService;
     private StatusPanel statusPanel;
+    private AddStudent addStudent;
 
 
     public MainFrame() {
@@ -35,6 +36,7 @@ public class MainFrame extends JFrame {
     private  void initializeVariables(){
         mainService = new MainFrameImpl();
         tablePanel = new TablePanel();
+        addStudent=new AddStudent(this);
         List<Student>students = mainService.getStudents();
         tablePanel.setTableModel(students);
         tablePanel.update();
@@ -72,6 +74,19 @@ public class MainFrame extends JFrame {
         //Adds file and edit to menu
         menuBar.add(fileMenu);
         menuBar.add(editMenu);
+
+        //Listener add Student
+        addStudents.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                addStudent.setVisible(true);
+            }
+        });
+
+        removeStudents.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.out.printf("Removing..%n");
+            }
+        });
 
         //Listener for exit item
         exit.addActionListener(new ActionListener() {
