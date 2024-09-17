@@ -17,4 +17,4 @@ El objetivo de este curso es familiarizarse con la persistencia en BBDD relacion
 |Rama|Contenido|
 |:-:|:-:|
 |**gui-dev**|Interfaz gráfica de la aplicación|
-|**db-development|Desarrollo de acciones del menú añadir estudiante y eliminar estudiante|
+|**db-development**|Desarrollo de acciones del menú añadir estudiante y eliminar estudiante|
