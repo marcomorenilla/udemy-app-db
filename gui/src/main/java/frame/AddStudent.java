@@ -3,12 +3,16 @@ package frame;
 import constants.NumberConstant;
 import constants.StringConstant;
 import db_student.Student;
+import dbservice.AddStudentImpl;
+import gui_interfaces.Callback;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -18,7 +22,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 
-public class AddStudent extends JDialog {
+public class AddStudent extends JDialog implements ActionListener {
     private JLabel name;
     private JLabel surname;
     private JLabel age;
@@ -29,6 +33,8 @@ public class AddStudent extends JDialog {
     private JTextField emailField;
     private JButton saveButton;
     private JButton cancelButton;
+    private AddStudentImpl addStudentImpl;
+    private Callback callback;
 
     public AddStudent(JFrame frame) {
         super(frame, StringConstant.ADD_STUDENT_TITLE,false);
@@ -39,6 +45,7 @@ public class AddStudent extends JDialog {
     }
 
     private void initializeVariables() {
+        addStudentImpl = new AddStudentImpl();
         name = new JLabel(StringConstant.NAME);
         surname = new JLabel(StringConstant.SURNAME);
         age = new JLabel(StringConstant.AGE);
@@ -49,6 +56,8 @@ public class AddStudent extends JDialog {
         emailField = new JTextField(10);
         saveButton = new JButton(StringConstant.SAVE);
         cancelButton = new JButton(StringConstant.CANCEL);
+        saveButton.addActionListener(this);
+        cancelButton.addActionListener(this);
     }
 
     private void createLayout() {
@@ -153,4 +162,28 @@ public class AddStudent extends JDialog {
         setLocationRelativeTo(frame);
         setSize(NumberConstant.ADD_STUDENT_WIDTH,NumberConstant.ADD_STUDENT_HEIGHT);
     }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource()==saveButton){
+            System.out.println("adding");
+            String name = nameField.getText();
+            String surname = surnameField.getText();
+            Integer age = Integer.parseInt(ageField.getText());
+            String email = emailField.getText();
+
+            Student student = new Student(2,name,surname,age,email);
+            addStudentImpl.addStudent(student);
+            callback.tableUpdated();
+            setVisible(false);
+
+        } else {
+            setVisible(false);
+        }
+    }
+
+    public void setCallback(Callback callback) {
+        this.callback=callback;
+    }
+
 }

@@ -1,4 +1,4 @@
-package dbservice;
+package service_interfaces;
 
 import db_student.Student;
 

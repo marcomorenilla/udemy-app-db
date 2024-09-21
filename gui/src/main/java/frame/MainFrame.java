@@ -3,6 +3,8 @@ package frame;
 import constants.NumberConstant;
 import constants.StringConstant;
 import db_student.Student;
+import dbservice.AddStudentImpl;
+import gui_interfaces.Callback;
 import dbservice.MainFrameImpl;
 
 import javax.swing.JFrame;
@@ -17,12 +19,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-public class MainFrame extends JFrame {
+public class MainFrame extends JFrame implements Callback {
 
     private TablePanel tablePanel;
     private MainFrameImpl mainService;
     private StatusPanel statusPanel;
     private AddStudent addStudent;
+
+
 
 
     public MainFrame() {
@@ -31,16 +35,18 @@ public class MainFrame extends JFrame {
         setJMenuBar(constructMenuBar());
         initializeVariables();
         constructLayout();
-
+        setCallbacks();
+        update();
     }
     private  void initializeVariables(){
         mainService = new MainFrameImpl();
         tablePanel = new TablePanel();
         addStudent=new AddStudent(this);
-        List<Student>students = mainService.getStudents();
-        tablePanel.setTableModel(students);
-        tablePanel.update();
         statusPanel = new StatusPanel();
+    }
+
+    private void setCallbacks(){
+        addStudent.setCallback(this);
     }
 
     private void constructLayout() {
@@ -115,5 +121,16 @@ public class MainFrame extends JFrame {
         setLocationRelativeTo(null);
         //frame visibility
         setVisible(true);
+    }
+
+    private void update(){
+        List<Student>students = mainService.getStudents();
+        tablePanel.setTableModel(students);
+        tablePanel.update();
+    }
+
+    @Override
+    public void tableUpdated() {
+        update();
     }
 }
