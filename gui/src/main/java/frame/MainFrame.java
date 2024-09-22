@@ -2,18 +2,60 @@ package frame;
 
 import constants.NumberConstant;
 import constants.StringConstant;
+import db_student.Student;
+import dbservice.AddStudentImpl;
+import gui_interfaces.Callback;
+import dbservice.MainFrameImpl;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.WindowConstants;
+//import java.awt.*;
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
-public class MainFrame extends JFrame {
+public class MainFrame extends JFrame implements Callback {
+
+    private TablePanel tablePanel;
+    private MainFrameImpl mainService;
+    private StatusPanel statusPanel;
+    private AddStudent addStudent;
+    private RemoveStudent removeStudent;
+
+
+
 
     public MainFrame() {
         super(StringConstant.APP_NAME);
         constructFrame();
         setJMenuBar(constructMenuBar());
+        initializeVariables();
+        constructLayout();
+        setCallbacks();
+        update();
+    }
+    private  void initializeVariables(){
+        mainService = new MainFrameImpl();
+        tablePanel = new TablePanel();
+        addStudent=new AddStudent(this);
+        removeStudent=new RemoveStudent(this);
+        statusPanel = new StatusPanel();
+    }
 
+    private void setCallbacks(){
+        addStudent.setCallback(this);
+        removeStudent.setCallback(this);
+    }
+
+    private void constructLayout() {
+        setLayout(new BorderLayout());
+        add(tablePanel, BorderLayout.CENTER);
+        add(statusPanel, BorderLayout.SOUTH);
     }
 
     //Method for menu bar options
@@ -42,6 +84,19 @@ public class MainFrame extends JFrame {
         menuBar.add(fileMenu);
         menuBar.add(editMenu);
 
+        //Listener add Student
+        addStudents.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                addStudent.setVisible(true);
+            }
+        });
+
+        removeStudents.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                removeStudent.setVisible(true);
+            }
+        });
+
         //Listener for exit item
         exit.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -69,5 +124,16 @@ public class MainFrame extends JFrame {
         setLocationRelativeTo(null);
         //frame visibility
         setVisible(true);
+    }
+
+    private void update(){
+        List<Student>students = mainService.getStudents();
+        tablePanel.setTableModel(students);
+        tablePanel.update();
+    }
+
+    @Override
+    public void tableUpdated() {
+        update();
     }
 }
