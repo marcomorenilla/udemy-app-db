@@ -9,4 +9,6 @@ public class NumberConstant {
     public static final int FRAME_HEIGHT = 600;
     public static final int ADD_STUDENT_WIDTH = 400;
     public static final int ADD_STUDENT_HEIGHT = 270;
+    public static final int REMOVE_STUDENT_WIDTH = 400;
+    public static final int REMOVE_STUDENT_HEIGHT = 270;
 }

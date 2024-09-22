@@ -18,8 +18,7 @@ public class Student {
 
     @Override
     public String toString() {
-        return String.format("Student: %n " +
-                "name: %s, surname: %s, email: %s, age: %d", name, surname,email,age);
+        return name + " " + surname;
     }
 
     public int getId() {

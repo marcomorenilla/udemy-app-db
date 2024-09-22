@@ -25,6 +25,7 @@ public class MainFrame extends JFrame implements Callback {
     private MainFrameImpl mainService;
     private StatusPanel statusPanel;
     private AddStudent addStudent;
+    private RemoveStudent removeStudent;
 
 
 
@@ -42,11 +43,13 @@ public class MainFrame extends JFrame implements Callback {
         mainService = new MainFrameImpl();
         tablePanel = new TablePanel();
         addStudent=new AddStudent(this);
+        removeStudent=new RemoveStudent(this);
         statusPanel = new StatusPanel();
     }
 
     private void setCallbacks(){
         addStudent.setCallback(this);
+        removeStudent.setCallback(this);
     }
 
     private void constructLayout() {
@@ -90,7 +93,7 @@ public class MainFrame extends JFrame implements Callback {
 
         removeStudents.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                System.out.printf("Removing..%n");
+                removeStudent.setVisible(true);
             }
         });
 

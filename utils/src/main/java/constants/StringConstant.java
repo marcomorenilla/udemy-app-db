@@ -17,6 +17,7 @@ public class StringConstant {
     public static final String STATUS_TEXT = "Student_udemy_APP";
 
     public static final String ADD_STUDENT_TITLE = "Add Student";
+    public static final String REMOVE_STUDENT_TITLE = "Remove Student";
     public static final String NAME = "Name";
     public static final String SURNAME = "Surname";
     public static final String AGE = "Age";

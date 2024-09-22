@@ -40,8 +40,8 @@ public class AddStudent extends JDialog implements ActionListener {
         super(frame, StringConstant.ADD_STUDENT_TITLE,false);
         initializeVariables();
         createLayout();
-        setWindow(frame);
-
+        setSize(NumberConstant.ADD_STUDENT_WIDTH,NumberConstant.ADD_STUDENT_HEIGHT);
+        setLocationRelativeTo(frame);
     }
 
     private void initializeVariables() {
@@ -158,10 +158,6 @@ public class AddStudent extends JDialog implements ActionListener {
 
     }
 
-    private void setWindow(JFrame frame) {
-        setLocationRelativeTo(frame);
-        setSize(NumberConstant.ADD_STUDENT_WIDTH,NumberConstant.ADD_STUDENT_HEIGHT);
-    }
 
     @Override
     public void actionPerformed(ActionEvent e) {

@@ -24,6 +24,7 @@ public class DB {
         }
     }
     public void removeStudent(Student student) {
+        System.out.println("DB method Student removed"+student);
         students.remove(student);
     }
 
