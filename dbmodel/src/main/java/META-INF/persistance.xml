@@ -9,7 +9,7 @@
         <properties>
             <!--MySQL -->
             <property name="jakarta.persistence.jdbc.url"
-                      value="jdbc:mysql://localhost/student-manager"/>
+                      value="jdbc:mysql://localhost/student-manager-app"/>
 
             <!-- Credentials -->
             <property name="jakarta.persistence.jdbc.user"
