@@ -105,6 +105,8 @@ public class MainFrame extends JFrame implements Callback {
                         JOptionPane.YES_NO_OPTION);
 
                 if (action == JOptionPane.YES_OPTION) {
+                    mainService.shutDown();
+                    statusPanel.stopTimer();
                     System.gc();
                     System.exit(0);
                 }

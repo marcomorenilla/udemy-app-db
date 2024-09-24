@@ -168,7 +168,7 @@ public class AddStudent extends JDialog implements ActionListener {
             Integer age = Integer.parseInt(ageField.getText());
             String email = emailField.getText();
 
-            Student student = new Student(2,name,surname,age,email);
+            Student student = new Student(name,surname,age,email);
             addStudentImpl.addStudent(student);
             callback.tableUpdated();
             setVisible(false);

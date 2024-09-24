@@ -1,18 +1,21 @@
 package db_student;
 
+import jakarta.persistence.Persistence;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
-import jakarta.persistence.Persistence;
+import jakarta.persistence.PersistenceContext;
+
 
 public enum EntityHandler {
 
     INSTANCE;
 
     private EntityManagerFactory factory =
-            Persistence.createEntityManagerFactory("student-manager-app");
+            Persistence.createEntityManagerFactory("studentmanager");
     private EntityManager em = factory.createEntityManager();
     private EntityTransaction transaction = em.getTransaction();
+
 
     public void open() {
         if(!transaction.isActive())

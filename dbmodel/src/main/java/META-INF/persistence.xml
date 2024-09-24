@@ -3,19 +3,20 @@
              xsi:schemaLocation="http://java.sun.com/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
              version="2.0">
 
-    <persistence-unit name="student-manager-app">
-
+    <persistence-unit name="studentmanager" transaction-type="RESOURCE_LOCAL">
+        <class>db_student.Student</class>
 
         <properties>
-            <!--MySQL -->
-            <property name="jakarta.persistence.jdbc.url"
-                      value="jdbc:mysql://localhost/student-manager-app"/>
+
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+
+          <!--MySQL -->
+            <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/student-manager-app"/>
 
             <!-- Credentials -->
-            <property name="jakarta.persistence.jdbc.user"
-                      value="root"/>
-            <property name="jakarta.persistence.jdbc.password"
-                      value=""/>
+            <property name="jakarta.persistence.jdbc.user" value="root"/>
+            <property name="jakarta.persistence.jdbc.password" value=""/>
 
             <!-- Automatic schema export -->
             <property name="jakarta.persistence.schema-generation.database.action"
@@ -28,9 +29,13 @@
 
             <!-- SQL Dialect -->
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
+            
+            <!-- Autodetection class -->
+            <property name="hibernate.archive.autodetection" value="class"/>
+
 
         </properties>
-
+        
     </persistence-unit>
 
 </persistence>

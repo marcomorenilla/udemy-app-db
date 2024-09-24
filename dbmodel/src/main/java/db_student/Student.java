@@ -2,6 +2,7 @@ package db_student;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -10,6 +11,7 @@ import jakarta.persistence.Table;
 public class Student {
 
     @Id
+    @GeneratedValue
     private int id;
     @Column
     private String name;
@@ -22,8 +24,7 @@ public class Student {
 
     public Student() {}
 
-    public Student(int id,String name, String surname, int age, String email) {
-        this.id=id;
+    public Student(String name, String surname, int age, String email) {
         this.name = name;
         this.surname = surname;
         this.age = age;

@@ -8,8 +8,6 @@ public class DB {
 
     public DB() {
         students = new ArrayList<Student>();
-        students.add(new Student(1,"Marco","Morenilla",25,"marcomorenilla@gmail.com"));
-        students.add(new Student(2,"Rigo","Uran",32,"rigouran@gmail.com"));
         System.out.println("Constructing DB with this list of students");
         for (Student student : students) {
             System.out.println(student);
