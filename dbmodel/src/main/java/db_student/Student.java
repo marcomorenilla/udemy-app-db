@@ -1,15 +1,30 @@
 package db_student;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "student")
 public class Student {
 
+    @Id
+    @GeneratedValue
     private int id;
+    @Column
     private String name;
+    @Column
     private String surname;
+    @Column
     private int age;
+    @Column
     private String email;
 
-    public Student(int id,String name, String surname, int age, String email) {
-        this.id=id;
+    public Student() {}
+
+    public Student(String name, String surname, int age, String email) {
         this.name = name;
         this.surname = surname;
         this.age = age;

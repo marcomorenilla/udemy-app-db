@@ -1,15 +1,15 @@
 package dbservice;
 
-import db_student.AddStudentModel;
 import db_student.Student;
+import db_student.queries.AddStudentQuery;
 import service_interfaces.AddStudentService;
 
 public class AddStudentImpl implements AddStudentService {
 
-    private AddStudentModel addStudentModel;
+    private AddStudentQuery addStudentModel;
 
     public AddStudentImpl() {
-        addStudentModel = new AddStudentModel();
+        addStudentModel = new AddStudentQuery();
     }
 
     @Override

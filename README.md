@@ -18,3 +18,4 @@ El objetivo de este curso es familiarizarse con la persistencia en BBDD relacion
 |:-:|:-:|
 |**gui-dev**|Interfaz gráfica de la aplicación|
 |**db-development**|Desarrollo de acciones del menú añadir estudiante y eliminar estudiante|
+|**hibernate**|Conexión del proyecto con BBDD mysql utilizando el framework hibernate|
