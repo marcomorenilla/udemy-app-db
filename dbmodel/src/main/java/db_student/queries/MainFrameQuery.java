@@ -15,8 +15,15 @@ public class MainFrameQuery extends AbstractQuery {
                 .createQuery("Select s from Student s", Student.class);
 
         students = query.getResultList();
+        for(Student student : students){
+            System.out.println("Student"+student);
+        }
 
         return students;
     };
+
+    public void close(){
+        EntityHandler.INSTANCE.shutdown();
+    }
 
 }

@@ -38,7 +38,6 @@ public class RemoveStudent extends JDialog implements ActionListener {
         super(frame, StringConstant.REMOVE_STUDENT_TITLE, false);
         initializeVariables();
         constructLayout();
-        loadStudents();
         setSize(NumberConstant.REMOVE_STUDENT_WIDTH, NumberConstant.REMOVE_STUDENT_HEIGHT);
         setLocationRelativeTo(frame);
     }
@@ -47,6 +46,7 @@ public class RemoveStudent extends JDialog implements ActionListener {
         studentLabel= new JLabel(StringConstant.REMOVE_STUDENT_TITLE);
         studentComboBox = new JComboBox();
         remover = new RemoveStudentImpl();
+        loadStudents();
         removeStudentButton = new JButton(StringConstant.REMOVE_STUDENT_TITLE);
         cancelButton = new JButton(StringConstant.CANCEL);
         removeStudentButton.addActionListener(this);
@@ -111,12 +111,14 @@ public class RemoveStudent extends JDialog implements ActionListener {
         }
 
     }
-    private void loadStudents() {
+    protected void loadStudents() {
+        System.out.println("executing load students");
         studentComboBox.removeAllItems();
 
         List<Student>studentList=remover.getStudents();
 
         for(Student student:studentList) {
+            System.out.println("Student to combobox" + student.getName());
             studentComboBox.addItem(student);
         }
     }

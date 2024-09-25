@@ -93,6 +93,7 @@ public class MainFrame extends JFrame implements Callback {
 
         removeStudents.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                removeStudent.loadStudents();
                 removeStudent.setVisible(true);
             }
         });
@@ -105,7 +106,7 @@ public class MainFrame extends JFrame implements Callback {
                         JOptionPane.YES_NO_OPTION);
 
                 if (action == JOptionPane.YES_OPTION) {
-                    mainService.shutDown();
+                    mainService.shutdown();
                     statusPanel.stopTimer();
                     System.gc();
                     System.exit(0);

@@ -22,7 +22,8 @@ public class MainFrameImpl implements MainFrameService {
         return mainFrameQuery.getStudents();
     }
 
-    public void shutDown() {
+    public void shutdown() {
+        System.out.println("Shutting down from service");
         mainFrameQuery.close();
     }
 }

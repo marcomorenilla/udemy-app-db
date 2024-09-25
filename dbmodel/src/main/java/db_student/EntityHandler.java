@@ -11,10 +11,15 @@ public enum EntityHandler {
 
     INSTANCE;
 
-    private EntityManagerFactory factory =
-            Persistence.createEntityManagerFactory("studentmanager");
-    private EntityManager em = factory.createEntityManager();
-    private EntityTransaction transaction = em.getTransaction();
+    private EntityManagerFactory factory;
+    private EntityManager em;
+    private EntityTransaction transaction;
+
+    private EntityHandler(){
+        factory= Persistence.createEntityManagerFactory("studentmanager");
+        em = factory.createEntityManager();
+        transaction = em.getTransaction();
+    }
 
 
     public void open() {
@@ -35,6 +40,7 @@ public enum EntityHandler {
     }
 
     public void shutdown() {
+        System.out.println("Closing EntityManager and Factory");
         em.close();
         factory.close();
     }
